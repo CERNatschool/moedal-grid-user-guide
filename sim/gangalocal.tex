@@ -1,0 +1,66 @@
+%=============================================================================
+\subsection{Local running with Ganga}
+\label{sec:moedallocalrunning}
+%=============================================================================
+First, go to the \code{ganga} directory within the \ac{MoEDAL} simulation script
+repository, and then start Ganga:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ cd $WORKING_DIR/moedal-run-simulations/ganga
+$ source /cvmfs/ganga.cern.ch/runGanga.sh 
+\end{lstlisting}
+
+You'll then see lots of output telling you about how Ganga has started,
+including the location of your Ganga configuration file \texttt{.gangarc}.
+Make a note of this.
+The prompt will now change to an interactive iPython prompt.
+It is from here that you can submit commands to Ganga.
+We have prepared a script that submits a MoEDAL simulation
+job to your local system. The beauty of Ganga is that it treats
+local, batch and grid jobs in the same way, so all it takes is a small
+tweak of your config file to change from local to grid running.
+The script creates, configures, and submits
+a small (four events) LHE simulation to your local system.
+You can run it and submit the job with:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+Ganga In [x]: execfile(‘make_local_job.py’) 
+Ganga In [x]: j.submit()
+\end{lstlisting}
+
+\begin{hintbox}{The Ganga command prompt}
+\emph{Note: the small \texttt{x} will actually be the number of the command
+you've typed into the Ganga prompt, and will keep incrementing
+by one with every command...}
+\end{hintbox}
+
+You should then be informed that your job has been submitted via the
+Ganga output.
+You can check the status of your jobs with the following Ganga command:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+Ganga In [x]: jobs
+\end{lstlisting}
+
+Once your job has finished running (showing as \texttt{Completed} in the jobs table),
+you can get the output directory using:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+Ganga In [x]: j = jobs(X) # where X is the job number in the table.
+Ganga In [x]: j.outputdir
+\end{lstlisting}
+
+You can then inspect the contents of this directory
+(including \texttt{stdout} and \texttt{stderr}) as usual.
+
+You can find more information about using Ganga here:
+
+\href{http://ganga.readthedocs.io}{http://ganga.readthedocs.io}
+
+\begin{hintbox}{Aliasing Ganga}
+\emph{Add an alias to your \texttt{~/.bashrc} file
+to save typing the whole command every time:}
+
+\code{alias run\_ganga\_cvmfs='source /cvmfs/ganga.cern.ch/runGanga.sh'}
+\end{hintbox}
+

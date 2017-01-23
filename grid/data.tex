@@ -1,0 +1,110 @@
+%=============================================================================
+\subsection{MoEDAL data storage in the GridPP DFC}
+\label{sec:data}
+%=============================================================================
+
+%-----------------------------------------------------------------------------
+\subsubsection{Accessing data on the DFC}
+\label{sec:dataaccess}
+%-----------------------------------------------------------------------------
+If you've followed the GridPP UserGuide, you'll know how to access data
+stored on the Grid via the \acf{DFC}.
+The only thing that's different for MoEDAL work is the \ac{VO} you'll use
+when generating your Grid proxy. So for example, to access the
+\ac{DFC} via the \acf{DFCCLI}:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ source /cvmfs/ganga.cern.ch/dirac_ui/bashrc
+$ dirac-proxy-init -g vo.moedal.org_user -M
+Generating proxy... 
+Enter Certificate password: # Enter your grid certificate password...
+.
+. [Proxy information-based output.]
+.
+$ dirac-dms-filecatalog-cli 
+Starting FileCatalog client
+
+File Catalog Client $Revision: 1.17 $Date: 
+
+FC:/>
+\end{lstlisting} 
+
+%\begin{Shaded}
+%\begin{Highlighting}[]
+%\NormalTok{$ }\KeywordTok{source} \NormalTok{/cvmfs/ganga.cern.ch/dirac_ui/bashrc}
+%\NormalTok{$ }\KeywordTok{dirac-proxy-init} \NormalTok{-g gridpp_user -M}
+%\KeywordTok{Generating} \NormalTok{proxy... }
+%\KeywordTok{Enter} \NormalTok{Certificate password: }\CommentTok{# Enter your grid certificate password...}
+%\KeywordTok{.}
+%\KeywordTok{.} \NormalTok{[}\KeywordTok{Proxy} \NormalTok{information-based output.]}
+%\KeywordTok{.}
+%\end{Highlighting}
+%\end{Shaded}
+
+As one would expect,
+MoEDAL data can be found in MoEDAL's space in the \ac{DFC}.
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+FC:/> ls /vo.moedal.org/
+sim
+data
+user
+\end{lstlisting}
+
+%-----------------------------------------------------------------------------
+\subsubsection{Adding data to the MoEDAL DFC}
+\label{sec:addingdata}
+%-----------------------------------------------------------------------------
+From here it is straightforward to add data to the \ac{DFC} by
+following the instructions in the GridPP UserGuide.
+Your own data should be added to your space in the MoEDAL \texttt{user}
+section:
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+FC:/> cd /vo.moedal.org/user/a/ada.lovelace
+FC:/> pwd
+/vo.moedal.org/user/a/ada.lovelace
+FC:/> mkdir my_moedal_data
+FC:/> ls
+my_moedal_data
+\end{lstlisting}
+
+\begin{hintbox}{The DIRAC command line tools}
+\emph{Don't forget you can use the DIRAC command lines tools to
+automate uploads and downloads once you have created your
+user space in the MoEDAL \ac{DFC}.}
+\end{hintbox}
+
+\clearpage
+
+%-----------------------------------------------------------------------------
+\subsubsection{An example: the 13 TeV LHE files}
+\label{sec:lhedataexample}
+%-----------------------------------------------------------------------------
+Experiment-wide data (i.e. data used by everyone in the Collaboration)
+can and is also hosted by GridPP and listed in the \ac{DFC}.
+For example, the \ac{LHE} files used in the 13 TeV GEANT4 simulations
+of the \ac{MoEDAL} experiment may be found here:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+FC:> cd /vo.moedal.org/sim/MMT13TeVa/LHE/13TeV/SpinHalf/Events
+FC:> ls
+run_01
+run_02
+run_03
+run_04
+run_05
+run_06
+run_07
+run_08
+run_09
+run_10
+FC:> cd run_01
+FC:> ls
+events.lhe.gz
+run_01_tag_1_banner.txt
+unweighted_events.lhe.gz
+unweighted_events.root
+\end{lstlisting}
+
+These files can then be used by jobs running on the Grid
+with a \ac{MoEDAL} \ac{VO} proxy,
+as we'll see in Section~\ref{sec:moedalgridrunning}.

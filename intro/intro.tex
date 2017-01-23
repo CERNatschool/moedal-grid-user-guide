@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\label{sec:intro}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=============================================================================
+\subsection{The MoEDAL experiment}
+\label{sec:intromoedal}
+%=============================================================================
+%The \ac{Monopole and Exotics Detector at the LHC~\cite{MoEDAL2009}
+The \ac{MoEDAL}~\cite{MoEDAL2009}
+is the latest addition to a long line of experiments that have searched for
+Dirac's hypothesised magnetic monopole~\cite{Dirac1931}.
+%
+Based at the Large Hadron Collider's Interaction Point 8 (IP8),
+it is housed in the same experimental cavern as
+the \acs{LHCb} experiment~\cite{LHCb2008}.
+%
+Like all experiments at the \acs{LHC},
+meeting the demands of its physics programme~\cite{MoEDAL2014}
+requires significant computing power.
+Simulations of the detector need to be run,
+data from the subdetectors needs to be stored and processed,
+and analyses combining the two need to be performed.
+%
+The \ac{WLCG}~\cite{WLCG2005} was
+designed to meet these needs (and more) of the \ac{LHC}
+experiments, and thanks to the
+United Kingdom's GridPP Collaboration~\cite{gridpp2006,gridpp2009}
+\ac{MoEDAL} has access to the resources it provides.
+%
+This document aims to provide a guide for users involved
+with the \ac{MoEDAL} experiment to harness the computing resources
+offered by the Grid for the benefit of the
+\ac{MoEDAL} Collaboration.
+
+%=============================================================================
+\subsection{For whom is this guide written?}
+\label{sec:forwhom}
+%=============================================================================
+This guide is primarily aimed at people working directly on
+the \ac{MoEDAL} experiment who wish to use Grid computing resources
+for their work. You could be:
+
+\begin{itemize}
+\item a researcher from a \ac{MoEDAL} member institution;
+\item a postgraduate student completing a PhD on \ac{MoEDAL};
+\item an undergraduate student working on a project supervised by 
+a \ac{MoEDAL} researcher;
+\item a \ac{MoEDAL}/\acs{CERN} summer student;
+\item a school student working with the \acf{IRIS}.
+\end{itemize}
+
+This user guide isn't really aimed at:
+
+\begin{itemize}
+\item users with no association with the \ac{MoEDAL} experiment, or;
+\item readers with little or no computing experience.
+\end{itemize}
+
+%_____________________________________________________________________________
+\begin{tcolorbox}[title=Computing knowledge]
+\emph{While every effort has been made to cover as many
+bases as possible, some computing knowledge is
+assumed. You can read more about what you might need to know in
+Section~\ref{sec:prerequisites}}.
+\end{tcolorbox}
+%_____________________________________________________________________________
+
+\newpage
+
+%=============================================================================
+\subsection{Overview of the guide}
+\label{sec:overview}
+%=============================================================================
+Section~\ref{sec:bwb} covers everything you need to know before
+attempting to get started on the Grid with MoEDAL, including
+prerequisites (Section~\ref{sec:prerequisites}),
+conventions used in this guide (Section~\ref{sec:conventions}),
+how to get help (Section~\ref{sec:help}),
+and
+how this document relates to the GridPP UserGuide (Section~\ref{sec:gridppuserguide}).
+%
+Section~\ref{sec:grid} describes how MoEDAL integrates with the Grid
+infrastructure, looking at the MoEDAL Virtual Organisation (Section~\ref{sec:vo}),
+how MoEDAL data is stored on the Grid (Section~\ref{sec:data}),
+and
+how MoEDAL software is distributed on the Grid with the
+MoEDAL CernVM-FS repository (Section~\ref{sec:cvmfs}).
+%
+You'll find out how to run MoEDAL simulations in
+Section~\ref{sec:sim},
+which covers setup (Section~\ref{sec:moedalgridsetup}),
+local running (Section~\ref{sec:moedallocalrunning}),
+and
+grid running (Section~\ref{sec:moedalgridrunning}).
+%
+After a brief look at the next steps to take (Section~\ref{sec:next}),
+references, acronymns, and acknowledgements are provided in
+Sections~\ref{sec:references}, \ref{sec:acronyms}, and
+\ref{sec:ack} respectively.

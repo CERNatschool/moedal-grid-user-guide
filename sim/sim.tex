@@ -1,0 +1,57 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Running MoEDAL simulations}
+\label{sec:sim}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We'll now look at running a simulation of the \ac{MoEDAL} experiment.
+Specifically, we'll be running the simulation of
+monopole-antimonopole production in 13 TeV proton-proton collisions
+at Interaction Point 8, i.e. the \ac{LHCb} cavern.
+We will use the \ac{LHCb} and \ac{MoEDAL} software frameworks to 
+simulate the passage of the resulting (anti)monopole through the
+\ac{MoEDAL} detector material to see how the various subdetectors perform.
+
+\begin{infobox}{Analysing the results}
+\emph{Note that we will not cover the analysis of the simulation results
+here -- this is beyond the scope of this guide,
+as (generally speaking) once you have the output files from the Grid
+you don't need the Grid to do the analysis.}
+\end{infobox}
+
+We'll actually run the simulation on your local machine before running it
+on the Grid.  This is actually a good thing to do generally,
+as it will let you quickly debug any problems before running your code
+on a remote system. Fortunately, switching between local running
+and Grid running is simple thanks to the Ganga \ac{UI}\footnote{
+See \href{http://ganga.web.cern.ch}{http://ganga.web.cern.ch}}.
+
+%=============================================================================
+\subsection{Setting up}
+\label{sec:moedalgridsetup}
+%=============================================================================
+Firstly, you'll need to clone the repository from the \ac{CERN}
+GitLab\footnote{See \href{http://gitlab.cern.ch}{http://gitlab.cern.ch}}
+system. Log on from your \ac{CVMFS}-enabled machine, create a working
+directory in your user space (which we will call \code{\$WORKING\_DIR})
+and check out the code as follows:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ cd $WORKING_DIR # wherever you want to run your simulations from.
+$ git clone ssh://git@gitlab.cern.ch:7999/moedal/moedal-run-simulations.git
+$ cd moedal-run-simulations
+\end{lstlisting}
+
+\begin{warningbox}{SSH keys}
+\emph{This repository cloning method assumes you have your \ac{SSH} key in your
+machine's \texttt{~/.ssh} directory, and that you have uploaded the
+public key to the CERN GitLab instance, as described in
+Section~\ref{sec:prerequisites}.}
+\end{warningbox}
+
+\clearpage
+
+\input{sim/gangalocal}
+
+\clearpage
+
+\input{sim/gangagrid}
+

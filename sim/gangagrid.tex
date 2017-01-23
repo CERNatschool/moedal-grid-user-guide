@@ -1,0 +1,72 @@
+%=============================================================================
+\subsection{Grid running with Ganga}
+\label{sec:moedalgridrunning}
+%=============================================================================
+\acs{DIRAC}~\cite{DIRAC2010}\footnote{%
+See \href{http://diracgrid.org/}{http://diracgrid.org}} is a software
+framework for distributed
+computing that the GridPP Collaboration uses to manage
+jobs and data on the Grid using their own
+GridPP \ac{DIRAC} instance~\cite{GRIDPPDIRAC2015a,GRIDPPDIRAC2015b} --
+so we're going to use it too.
+To get started, we firstly need to change a few settings in our
+Ganga configuration file to reflect the fact we're running
+with the \ac{MoEDAL} \ac{VO}. Specifically, in your
+\texttt{~/.gangarc} file, find and set the following variables:
+ 
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+[defaults_DiracProxy]
+...
+group = vo.moedal.org_user
+...
+[DIRAC]
+...
+DiracLFNBase = /vo.moedal.org/user/a/ada.lovelace
+...
+\end{lstlisting}
+
+(Except use your own \ac{DFC} user space, of course!)
+
+Then we initialise \ac{DIRAC} and generate a Grid proxy as usual:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ source /cvmfs/ganga.cern.ch/dirac_ui/bashrc
+$ dirac-proxy-init -g vo.moedal.org_user -M
+Generating proxy... 
+Enter Certificate password:
+[...output...]
+\end{lstlisting}
+
+Remember how we said switching to Grid running with Ganga was trivial?
+Well, we just have to use a slightly script to create the Grid-ready job
+and then submit it as before:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+Ganga In [x]: execfile('make_dirac_job.py') 
+Ganga In [x]: j.submit()
+\end{lstlisting}
+
+And that's it!
+You can check on the status of your job in the GridPP DIRAC
+system by accessing the GridPP DIRAC page here:
+
+\href{https://dirac.gridpp.ac.uk}{https://dirac.gridpp.ac.uk}
+
+With a browser that has your grid certificate installed.
+You should select \term{vo.moedal.org\_user} from the bottom-right
+drop down menu, and then \term{Job Monitor} from the \term{Jobs} drop-down menu
+in the top-left corner.
+
+\begin{warningbox}{Submitting jobs to the Grid}
+\emph{Submitting jobs to the grid can take some time.
+You might want to make a cup of tea or do something else while waiting!}
+\end{warningbox}
+
+%If all has gone well,
+%you should now be able to retrieve the job output as per the
+%instructions in the GridPP UserGuide.
+%
+%\begin{hintbox}{Getting help with errors}
+%\emph{If the job fails, or you get errors, remember the help
+%contacts available in the GridPP UserGuide!}
+%\end{hintbox}

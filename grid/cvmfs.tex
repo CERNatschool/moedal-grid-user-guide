@@ -1,0 +1,118 @@
+%=============================================================================
+\subsection{The MoEDAL CVMFS repository}
+\label{sec:cvmfs}
+%=============================================================================
+The CernVM File System -- a.k.a. CernVM-FS or \acs{CVMFS} -- is used to
+distribute software on the Grid.  You can read more about it
+in~\cite{CVMFS2015}.  It is part of the CernVM project~\cite{CernVM2015}.
+You'll have read about it in the GridPP UserGuide too, but in essence it means
+\ac{MoEDAL}'s software will be instantly available on any
+\ac{CVMFS}-enabled computing node you use.
+
+%-----------------------------------------------------------------------------
+\subsubsection{Finding the MoEDAL CVMFS repository}
+\label{sec:moedalcvmfsfinding}
+%-----------------------------------------------------------------------------
+
+MoEDAL's \ac{CVMFS} repository can be found here:
+
+\texttt{/cvmfs/moedal.cern.ch/}
+
+So, for example, you can find MoEDAL's Gauss software by logging on to
+any computing node with the MoEDAL \ac{CVMFS} repository enabled
+(e.g. a GridPP CernVM) and typing:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ ls /cvmfs/moedal.cern.ch/Gauss
+Gauss_v48r1  Geometry
+\end{lstlisting}
+
+Simulations of the MoEDAL experiment, based on \ac{LHCb}'s Gauss
+software, are currently running with \texttt{v48r1}.
+The custom MoEDAL Gauss modules used may be found here:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ ls /cvmfs/moedal.cern.ch/Gauss/Gauss_v48r1/Sim
+Gauss  GaussMoEDAL  GaussMonopoles
+\end{lstlisting}
+
+\begin{infobox}{CVMFS and the LHCb software framework}
+\emph{As you'll see from the next section, we actually use a lot
+of \ac{LHCb}'s software in \ac{MoEDAL} simulations -- and it too
+is available via \ac{CVMFS}!}
+\end{infobox}
+
+We also use \ac{CVMFS} to distribute the latest \ac{MoEDAL}
+geometry files. The latest version of the MoEDAL geometry
+at the time of writing, \texttt{2.0.0}, may be found here:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+ls /cvmfs/moedal.cern.ch/Gauss/Geometry/2-0-0/
+geometry_default.db  geometry_maximal.db  geometry_minimal.db
+\end{lstlisting}
+
+As you'll see in the next section, these are used in the
+simulations -- something that is made trivial by publishing them
+on the \ac{CVMFS} repository.
+
+\begin{warningbox}{Do not use CVMFS for data!}
+\emph{Note that we do not use CVMFS for data. This is what the
+\ac{DFC} is for. The only exception to this might be data used for
+software testing and validation, but even then using Grid data
+as part of your tests might not be a bad thing!}
+\end{warningbox}
+
+\clearpage
+
+
+%-----------------------------------------------------------------------------
+\subsubsection{Managing the MoEDAL CVMFS repository}
+\label{sec:moedalcvmfsmanaging}
+%-----------------------------------------------------------------------------
+
+To add and remove software from the MoEDAL \ac{CVMFS} repository,
+you will need to be a member of the
+\texttt{LxCvmfs-moedal} \ac{CERN} e-Group\footnote{
+Full title: Writers of \texttt{/cvmfs/moedal.cern.ch}}.
+To access the repository, once you are confirmed as a member of the
+\texttt{LxCvmfs-moedal} e-Group, log onto \ac{CERN}'s lxplus system
+with your \ac{CERN} computing account:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ ssh -Y alovelace@lxplus.cern.ch
+Password: 
+* ********************************************************************
+* Welcome to lxplus0048.cern.ch, SLC, 6.8
+* Archive of news is available in /etc/motd-archive
+* Reminder: You have agreed to comply with the CERN computing rules
+* https://cern.ch/ComputingRules
+* Puppet environment: production, Roger state: production
+* Foreman hostgroup: lxplus/nodes/login
+* LXPLUS Public Login Service
+* ********************************************************************
+\end{lstlisting}
+
+\begin{warningbox}{Managing CVMFS repositories}
+\emph{As you may have guessed, you'll need a CERN computing account
+to manage the MoEDAL CVMFS repository. We'll assume that if you've
+got as far as needed to manage the repository, this shouldn't be
+a problem.}
+\end{warningbox}
+
+From there you'll be able to log into the MoEDAL \ac{CVMFS} repository:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+$ ssh -Y lovelace@cvmfs-moedal.cern.ch
+\end{lstlisting}
+
+After which you'll be presented with most of the instructions you need
+to start a \ac{CVMFS} \term{transaction},
+which you'll need to do to make changes to what's in the repository.
+You should refer to the full instructions for managing
+a \ac{CVMFS} repository on the CernVM TWiki page:
+
+\href{https://twiki.cern.ch/twiki/bin/view/CvmFS/MaintainRepositories}{https://twiki.cern.ch/twiki/bin/view/CvmFS/MaintainRepositories}
+
+Which also includes useful hints and tips on directory structure,
+managing your software, and how to get the best out of the
+\ac{CVMFS} system.

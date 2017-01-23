@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{What's next?}
+\label{sec:next}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Now you can submit jobs successfully, you can start to play
+around with the parameters in \texttt{make\_dirac\_job.py}
+to produce different simulation runs.
+For example, you could use loops with the following variables to submit
+many jobs at once:
+
+\begin{lstlisting}[gobble=0,numbers=none,language=bash]
+## The spin of the magnetic monopole.
+monopole_spins = ['SpinZero', 'SpinHalf']
+
+## A dictionary of monopole masses and correcponding LHE run name.
+monopole_masses = { \
+   200:'run_01', \
+   500:'run_02', \
+  1000:'run_03', \
+  1500:'run_04', \
+  2000:'run_05', \
+  2500:'run_06', \
+  3000:'run_07', \
+  4000:'run_08', \
+  5000:'run_09', \
+  6000:'run_10'  \
+}
+
+## A dictionary of magnetic charges to corresponding LHE filenames.
+monopole_magnetic_charges = { \
+  1:'q10', \
+  2:'q20', \
+  3:'q30', \
+  4:'q40', \
+  5:'q50', \
+  6:'q60'
+}
+
+## A dictionary of geometry names to geometry files.
+geometries = { \
+  'default':'geometry_default.db', \
+  'maximal':'geometry_maximal.db', \
+  'minimal':'geometry_minimal.db'
+} 
+\end{lstlisting}
+
+%\begin{hintbox}{Getting Pythonic}
+%\emph{You can use these dictionaries and loops to generate and
+%submit many jobs at once.}
+%\end{hintbox}
+
+So there we go -- having followed this guide,
+you should be able to submit MoEDAL
+simulation jobs using Ganga and GridPP DIRAC.
+You should also be able to develop new job configurations
+for new physics scenarios. These should be added to
+the GitLab repository here:
+
+\href{https://gitlab.cern.ch/moedal/moedal-run-simulations}{https://gitlab.cern.ch/moedal/moedal-run-simulations}
+
+Good luck!

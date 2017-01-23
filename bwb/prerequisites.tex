@@ -1,0 +1,97 @@
+%=============================================================================
+\subsection{Prerequisites}
+\label{sec:prerequisites}
+%=============================================================================
+If you're working on the \ac{MoEDAL} experiment,
+it's very likely that you will have most of the things listed below.
+But there's no harm in checking!
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{A valid email address}: This sounds kind of obvious - and who
+  \emph{doesn't} have an email address these days? - but you'll need a
+  valid email address from which you can send and receive emails.
+\end{itemize}
+
+%_____________________________________________________________________________
+\begin{tcolorbox}[title=Institutional email accounts]
+\emph{You should use the email account
+given to you by the school or university associated with the
+\ac{MoEDAL} Collaboration, as this
+will make life a little easier when it comes to granting you access to
+grid resources. Only use your \acs{CERN} email address (if you have one)
+iff it is associated with your Grid certificate.}
+\end{tcolorbox}
+%_____________________________________________________________________________
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{A GitHub account}: Much of
+  the software used by the GridPP Collaboration
+  and associated partner organisations is hosted on their
+  public GitHub repositories - see, for example, the
+  \href{http://github.com/gridpp}{the GridPP GitHub repository}\footnote{
+\href{http://github.com/gridpp}{http://github.com/gridpp}
+} You can sign up for a free GitHub account on \href{http://github.com}{their
+  website}.
+\item
+  \textbf{Experience with the command line}: The command line allows you
+  to type instructions into your computer in order to get it to do
+  things for you, rather than relying on clicking on icons, buttons, and
+  other graphical elements of a software package. In his guide,
+  \href{http://www.learnenough.com/command-line-tutorial}{Learn Enough
+  Command Line to be Dangerous}\footnote{
+\href{http://www.learnenough.com/command-line-tutorial}{http://www.learnenough.com/command-line-tutorial}
+}, Michael Hartl uses a nice analogy with
+  magic. While it is \emph{technically} possible to use the Grid without
+  using the command line (using, for example, a web browser to access
+  specific Grid systems), using the command line is infinitely easier
+  and gives you much, much more flexibility. Hartl's
+  \href{http://www.learnenough.com/command-line-tutorial}{tutorial}, is
+  well worth following if you've not used it before (or even if you
+  have!).
+\item
+  \textbf{A text editor}: we'll be writing scripts - series of commands
+  to be executed one after the other - and for this you'll need a text
+  editor of some description. Emacs, Vim, Vi - whatever you feel most
+  comfortable with. Vim, for example, allows you to edit text from the
+  command line.
+\item
+  \textbf{Programming with Python}: Once we start getting fancy with the
+  \ac{MoEDAL} software and the
+  Grid, we're going to use the Python programming language (via an
+  Application Programming Interface) to do a lot of the work for us. As
+  such, some familiarity with Python will be handy. There are plenty of
+  (free!) online tutorials available that can get you started. We'll
+  provide plenty of examples too, so don't panic!
+\item
+  \textbf{A Scientific Linux 6 command line with CVMFS access}: This
+  will either be provided by your institution or
+  via a \href{../gridpp-cernvm/gridpp-cernvm.html}{GridPP CernVM}, a
+  Virtual Machine made by \href{http://cern.home}{CERN} that you can run
+  yourself. The \href{https://cernvm.cern.ch/}{CernVM-File System},
+  a.k.a. CernVM-FS or CVMFS, gives you (and any grid node, for that
+  matter) instant access to all sorts of software \emph{without having
+  to install anything}. So it's worth sorting out!
+  You can find instructions for creating a
+  GridPP CernVM  \href{http://www.gridpp.ac.uk/userguide}{the GridPP UserGuide}.
+\item
+  \textbf{Access to a CERN GitLab account} (\acs{CERN} users only):
+\acs{CERN} has its own Git repository service, and every \acs{CERN} user automatically
+has an account on it. You'll need to log on and add an \acs{SSH} key to use
+it though - see [this page](https://gitlab.cern.ch/help/ssh/README.md) for more
+information.
+\item
+  \textbf{An SSH key}:
+\acf{SSH} keys are a way to identify trusted computers without involving passwords.
+You can generate an \acs{SSH} key and add the public key to your GitHub account
+by following the procedures outlined in this
+\href%
+{https://help.github.com/articles/generating-an-ssh-key/}%
+{this guide from GitHub}.
+\end{itemize}
+
+Got/done all of that? Good. Now let's look at the
+conventions used in this guide.
