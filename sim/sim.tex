@@ -21,7 +21,7 @@ We'll actually run the simulation on your local machine before running it
 on the Grid.  This is actually a good thing to do generally,
 as it will let you quickly debug any problems before running your code
 on a remote system. Fortunately, switching between local running
-and Grid running is simple thanks to the Ganga \ac{UI}\footnote{
+and Grid running is simple thanks to the Ganga \ac{UI}\footnote{%
 See \href{http://ganga.web.cern.ch}{http://ganga.web.cern.ch}}.
 
 %=============================================================================
@@ -46,6 +46,12 @@ machine's \texttt{~/.ssh} directory, and that you have uploaded the
 public key to the CERN GitLab instance, as described in
 Section~\ref{sec:prerequisites}.}
 \end{warningbox}
+
+\begin{warningbox}{Port unblocking}
+\emph{Note that the CERN GitLab instance is accessed via port 7999 -- make
+sure this is unblocked in any of your system's firewalls.}
+\end{warningbox}
+
 
 \clearpage
 
